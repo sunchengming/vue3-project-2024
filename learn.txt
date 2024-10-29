@@ -1,0 +1,23 @@
+pinia-构建用户仓库和持久化
+官方文档：https://prazdevs.github.io/pinia-plugin-persistedstate/zh/
+1.安装插件：pnpm add pinia-plugin-persistedstate -D
+2.使用main.js
+import persist from 'pinia-plugin-persistedstate'
+app.use(createPinia().use(persist))
+3.配置stores/user.js
+import {defineStore} from 'pinia'
+import {ref} from 'vue'
+//用户模块
+export const useUserStore = defineStore(
+    'big-user',
+    ()=>{
+        const token = ref('');
+        const setToken = (t)=>(token.value = t)
+        return{
+            token,
+            setToken
+        }
+    },{
+        persist:true//持久化
+    }
+)
