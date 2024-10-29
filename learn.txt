@@ -1,3 +1,7 @@
+项目演示：
+https://fe-bigevent-web.itheima.net/login
+
+
 pinia-构建用户仓库和持久化
 官方文档：https://prazdevs.github.io/pinia-plugin-persistedstate/zh/
 1.安装插件：pnpm add pinia-plugin-persistedstate -D
@@ -21,3 +25,27 @@ export const useUserStore = defineStore(
         persist:true//持久化
     }
 )
+
+axios配置
+http://www.axios-js.com/zh-cn/docs/#axios-create-config
+element
+https://element-plus-docs.bklab.cn/zh-CN/component/overview.html
+
+# 在本地创建一个新的目录并进入该目录
+mkdir my-project
+cd my-project
+ 
+# 初始化本地仓库
+git init
+ 
+# 添加GitHub远程仓库地址
+git remote add origin https://github.com/your-username/your-repository.git
+ 
+# 添加文件到本地仓库（将.换成你的文件名）
+git add .
+ 
+# 提交更改
+git commit -m "Initial commit"
+ 
+# 推送到GitHub
+git push -u origin master
