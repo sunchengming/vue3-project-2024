@@ -1,6 +1,7 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import pluginVue from 'eslint-plugin-vue';
+import { ElMessage } from 'element-plus';
 
 export default [
   { files: ['**/*.{js,mjs,cjs,vue}'] },
@@ -19,5 +20,9 @@ export default [
       semi: ['error', 'always'],
       quotes:['error','single']
     }
+  },
+  // 配置ElMessage不提示报错
+  globals:{
+    ElMessage:'readonly'
   }
 ];

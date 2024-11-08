@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { userUserStore } from '@/stores';
 import { ElMessage } from 'element-plus';
-import router from './../src/router/index';
-const baseUrl = 'http://big-event-vue-api-t.itheima.net';
+import router from '@/router/index';
+const baseURL = 'http://big-event-vue-api-t.itheima.net';
 
 const instance = axios.create({
-    baseUrl,
+    baseURL,
     // 设置超时时间
     timeout:10000
 });
@@ -22,7 +22,7 @@ instance.interceptors.request.use(
     (err)=>Promise.reject(err)
 );
 // 响应拦截器
-instance.interceptors.reponse.use(
+instance.interceptors.response.use(
     (res)=>{
         // 处理业务逻辑
         if(res.data.code===0){
@@ -44,4 +44,4 @@ instance.interceptors.reponse.use(
     } 
 );
 export default instance;
-export {baseUrl};
+export {baseURL};
