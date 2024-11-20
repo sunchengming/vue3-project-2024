@@ -23,6 +23,7 @@ export default [
   },
   // 配置ElMessage不提示报错
   globals:{
-    ElMessage:'readonly'
+    ElMessage:'readonly',
+    ElMessageBox:'readonly'
   }
 ];

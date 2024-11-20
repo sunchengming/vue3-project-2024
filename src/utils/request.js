@@ -34,7 +34,7 @@ instance.interceptors.response.use(
     },
     (err)=>{
         // 处理401，只要给提示  代表权限不足或者token过期
-        if(err.reponse?.state === 401){
+        if(err.response?.status === 401){
             router.push('/login');
         }
 

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { userUserStore } from '@/stores';
 
 
 // createRouter创建路由实例
@@ -11,6 +12,7 @@ const router = createRouter({
   routes: [
     {
       path:'/login',
+      meta:{title:'登录'},
       component:()=>import('@/views/login/LoginPage.vue')
     },
     {
@@ -20,27 +22,43 @@ const router = createRouter({
       children:[
         {
           path:'/article/manage',
+          meta:{title:'文章管理'},
           component:()=>import('@/views/article/ArticleManage.vue')
         },
         {
-          path:'/alticle/channel',
+          path:'/article/channel',          
+          meta:{title:'文章分类'},
           component:()=>import('@/views/article/ArticleChannel.vue')
         },
         {
-          path:'/user/profile',
+          path:'/user/profile',        
+          meta:{title:'个人中心/基本资料'},
           component:()=>import('@/views/user/UserProfile.vue')
         },
         {
-          path:'/user/avatar',
+          path:'/user/avatar',        
+          meta:{title:'个人中心/更换头像'},
           component:()=>import('@/views/user/UserAvatar.vue')
         },
         {
-          path:'/user/password',
+          path:'/user/password',        
+          meta:{title:'个人中心/修改密码'},
           component:()=>import('@/views/user/UserPassword.vue')
         }
+
       ]
     }
   ],
 });
+
+router.beforeEach((to,from)=>{
+  const useStore = userUserStore();  
+  if(to.meta && to.meta.title){
+    document.title = to.meta.title
+  }
+  console.log(useStore)
+  if(!useStore.token && to.path !== '/login') return '/login'
+  return true
+})
 
 export default router;

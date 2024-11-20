@@ -23,6 +23,13 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  css:{
+    preprocessorOptions:{
+      scss:{
+        silenceDeprecations:["legacy-js-api"]
+      }
+    }
+  },
   server:{
     port:8080,
     // proxy:{
