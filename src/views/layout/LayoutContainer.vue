@@ -14,8 +14,9 @@ import {
 import { userUserStore } from '@/stores';
 // 获取路由做业面跳转
 import { useRouter } from 'vue-router';
+import avatar from '@/assets/avatar.png';
 const router = useRouter();
-
+console.log(avatar);
 // 开关启动，点击完下拉展示
 const showDrop = ref(false);
 const dropdown1 = ref();
@@ -42,6 +43,7 @@ const handleCommand = async command => {
         });
         userStore.removeToken();
         userStore.setUser({});
+        ElMessage.success('退出登录');
         router.push('/login');
     } else {
         router.push(`/user/${command}`);
@@ -83,7 +85,7 @@ const handleCommand = async command => {
                         </el-menu-item>
                         <el-menu-item index="/user/password">
                             <el-icon><EditPen /></el-icon>
-                            修改密码
+                            重置密码
                         </el-menu-item>
                     </el-menu-item-group>
                 </el-sub-menu>
@@ -204,5 +206,8 @@ const handleCommand = async command => {
         color: #666;
         font-size: 14px;
     }
+}
+:deep(.el-menu-item-group__title) {
+    padding: 0;
 }
 </style>

@@ -1,16 +1,21 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { Edit, Delete } from '@element-plus/icons-vue';
-import { artGetArtlistServer } from '@/api/article';
+import {
+    artGetArtlistServer,
+    artEditChannelServer,
+    artDelServe
+} from '@/api/article';
 import { formatTime } from '@/utils/format';
 import channelSelect from './components/ChannelSelect.vue';
+import PageDraw from './components/PageDraw.vue';
 // import moment from 'moment';
 const value = ref('');
 
 const tableData = ref([]);
 const params = ref({
     pagenum: 1,
-    pagesize: 2,
+    pagesize: 5,
     cate_id: '',
     state: ''
 });
@@ -41,6 +46,9 @@ const reset = () => {
     params.value.state = '';
     getArtList();
 };
+const handleEdit = row => {
+    articleEditRef.value.open(row);
+};
 // 时间切换格式方法：
 // 1.moment组件
 // const dataFromat = row => {
@@ -49,11 +57,36 @@ const reset = () => {
 // };
 // 2.封装在utils中的format.js里  -建议
 // element-plus中自带的dayjs 方法
+
+// 文章发布
+const articleEditRef = ref();
+const onAddArticle = () => {
+    articleEditRef.value.open({});
+};
+
+const handleDelete = async row => {
+    await ElMessageBox.confirm('您确认要删除么', '温馨提示', {
+        type: 'warning',
+        confirmButtonText: '确认',
+        cancelButtonText: '取消'
+    });
+    Elmessage.success('删除成功');
+    await artDelServe(row.id);
+    getArtList();
+};
+
+const onsuccess = type => {
+    if (type === 'add') {
+        const editPage = Math.ceil((total.value + 1) / params.value.pagesize);
+        params.value.pagenum = editPage;
+    }
+    getArtList();
+};
 </script>
 <template>
     <page-container title="文章管理" class="contianer">
         <template #extra>
-            <el-button type="primary">发布文章</el-button>
+            <el-button type="primary" @click="onAddArticle">添加文章</el-button>
         </template>
         <el-form inline>
             <el-form-item label="文章分类：">
@@ -116,6 +149,11 @@ const reset = () => {
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
         />
+        <page-draw ref="articleEditRef" @success="onsuccess"></page-draw>
     </page-container>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(.el-table__cell) {
+    padding: 20px 0;
+}
+</style>

@@ -49,3 +49,47 @@ git commit -m "Initial commit"
  
 # 推送到GitHub
 git push -u origin master
+
+
+$el获取组件内DOM（包括子组件，当前.vue组件，以及父组件）
+示例：
+<template>
+  <div class="content">
+    <div>
+      <el-button type="success"  @click="handleSubmit">
+        確定
+      </el-button>
+      <!-- 设定 ref="passA" -->
+      <el-button ref="passA" type="success" @click="handlePassA">
+        被触发 A
+      </el-button>
+    </div>
+    <!-- 设定 ref="passB" -->
+    <div style="height:40px; width:100px; background: burlywood;" 
+    ref="passB" @click="handlePassB">
+      被触发 B
+    </div>
+  </div>
+</template>
+
+handleSubmit(){
+    /*
+    * 有同学看到这里会问：咦，博主，你这里写法为什么不同呀？
+    * 嗯，这位同学不错，问到正题上了，避免了你在实际运用中出现问题
+    * 因为 ref="passA" 的按钮，它是 element ui 提供的组件，
+    * 组件本身不是 DOM，所以需要 .$el 的帮助后才能提取组件的 DOM
+    * 反之，对于提取普通元素上的 DOM ，就不需要了
+    */
+    this.$refs.passA.$el.click()
+    this.$refs.passB.click()
+ 
+    console.log(this.$refs)
+},
+handlePassA(){
+    console.log('我是 PassA, 我报触发了')
+    console.log('我自己的高度 =>',this.$refs.passA.$el.offsetHeight)
+},
+handlePassB(){
+    console.log('我是 PassB, 我报触发了')
+    console.log('我自己的高度 =>',this.$refs.passB.offsetHeight)
+},
