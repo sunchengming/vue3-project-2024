@@ -9,6 +9,7 @@ const {
     getUser
 } = userStore;
 const imageUrl = ref(user_pic);
+
 const handleChange = file => {
     //这里图片预览是file格式的文件
     // imageUrl.value = URL.createObjectURL(file.raw);

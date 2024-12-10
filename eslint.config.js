@@ -14,16 +14,14 @@ export default [
       'dist',
       'public',
     ],
-  },
-  {
-    rules: {     
-      semi: ['error', 'always'],
-      quotes:['error','single']
-    }
+  },  
+  rules: {     
+    semi: ['error', 'always'],
+    quotes:['error','single']
   },
   // 配置ElMessage不提示报错
   globals:{
     ElMessage:'readonly',
     ElMessageBox:'readonly'
-  }
+  } 
 ];

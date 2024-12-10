@@ -1,17 +1,11 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { Edit, Delete } from '@element-plus/icons-vue';
-import {
-    artGetArtlistServer,
-    artEditChannelServer,
-    artDelServe
-} from '@/api/article';
+import { artGetArtlistServer, artDelServe } from '@/api/article';
 import { formatTime } from '@/utils/format';
 import channelSelect from './components/ChannelSelect.vue';
 import PageDraw from './components/PageDraw.vue';
 // import moment from 'moment';
-const value = ref('');
-
 const tableData = ref([]);
 const params = ref({
     pagenum: 1,
