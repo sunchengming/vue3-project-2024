@@ -34,19 +34,19 @@ https://element-plus-docs.bklab.cn/zh-CN/component/overview.html
 # 在本地创建一个新的目录并进入该目录
 mkdir my-project
 cd my-project
- 
+
 # 初始化本地仓库
 git init
- 
+
 # 添加GitHub远程仓库地址
 git remote add origin https://github.com/your-username/your-repository.git
- 
+
 # 添加文件到本地仓库（将.换成你的文件名）
 git add .
- 
+
 # 提交更改
 git commit -m "Initial commit"
- 
+
 # 推送到GitHub
 git push -u origin master
 
@@ -65,7 +65,7 @@ $el获取组件内DOM（包括子组件，当前.vue组件，以及父组件）
       </el-button>
     </div>
     <!-- 设定 ref="passB" -->
-    <div style="height:40px; width:100px; background: burlywood;" 
+    <div style="height:40px; width:100px; background: burlywood;"
     ref="passB" @click="handlePassB">
       被触发 B
     </div>
@@ -82,7 +82,7 @@ handleSubmit(){
     */
     this.$refs.passA.$el.click()
     this.$refs.passB.click()
- 
+
     console.log(this.$refs)
 },
 handlePassA(){
@@ -93,3 +93,5 @@ handlePassB(){
     console.log('我是 PassB, 我报触发了')
     console.log('我自己的高度 =>',this.$refs.passB.offsetHeight)
 },
+
+git add 指定文件
