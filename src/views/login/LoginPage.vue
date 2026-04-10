@@ -57,7 +57,6 @@ const checkRegister = async () => {
     type: 'success',
   })
   isRegister.value = true
-  console.log('注册成功')
 }
 const useStore = userUserStore()
 const router = useRouter()
@@ -69,7 +68,6 @@ const checkLogin = async () => {
   router.push('/')
 }
 watch(isRegister, () => {
-  console.log(isRegister)
   formModel.value = {
     username: '',
     password: '',

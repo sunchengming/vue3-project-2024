@@ -26,9 +26,7 @@ const props = defineProps({
 })
 watch(
   () => props.modelValue,
-  (oldValue, newValue) => {
-    console.log(oldValue, newValue)
-  },
+  () => {},
 )
 </script>
 <template>

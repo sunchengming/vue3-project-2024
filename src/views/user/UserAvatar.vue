@@ -19,7 +19,6 @@ const handleChange = (file) => {
   reader.onload = () => {
     imageUrl.value = reader.result
   }
-  console.log(imageUrl.value)
 }
 const UploadRef = ref()
 const selectImg = () => {

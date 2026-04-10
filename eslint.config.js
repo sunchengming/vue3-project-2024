@@ -200,8 +200,8 @@ export default [
       },
     },
     rules: {
-      // 允许使用 v-html 指令
-      'vue/no-v-html': 'off',
+      // warn on v-html usage to prevent XSS
+      'vue/no-v-html': 'warn',
     },
   },
 ]
