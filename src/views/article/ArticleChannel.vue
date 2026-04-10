@@ -27,7 +27,6 @@ const handleAdd = () => {
 const onSuccess = () => {
   getListUpdate()
 }
-console.log(123)
 </script>
 <template>
   <page-container title="文章分类" class="container">

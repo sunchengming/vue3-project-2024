@@ -8,7 +8,7 @@ export const artAddChannelServer = (data) => request.post('/my/cate/add', data)
 
 //编辑文章分类
 export const artEditChannelServer = (params) =>
-  request.put('/my/cate/info', data)
+  request.put('/my/cate/info', params)
 
 //删除文章分类
 export const artDelChannelServer = (id) =>

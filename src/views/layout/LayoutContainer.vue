@@ -16,7 +16,6 @@ import { userUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
 import avatar from '@/assets/avatar.png'
 const router = useRouter()
-console.log(avatar)
 // 开关启动，点击完下拉展示
 const showDrop = ref(false)
 const dropdown1 = ref()

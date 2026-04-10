@@ -2,7 +2,9 @@ import axios from 'axios'
 import { userUserStore } from '@/stores'
 import { ElMessage } from 'element-plus'
 import router from '@/router/index'
-const baseURL = 'https://big-event-vue-api-t.itheima.net'
+const baseURL =
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://big-event-vue-api-t.itheima.net'
 
 const instance = axios.create({
   baseURL,
@@ -15,7 +17,7 @@ instance.interceptors.request.use(
     // 携带token
     const userStore = userUserStore()
     if (userStore.token) {
-      config.headers.Authorization = userStore.token
+      config.headers.Authorization = `Bearer ${userStore.token}`
     }
     return config
   },
@@ -39,7 +41,7 @@ instance.interceptors.response.use(
     }
 
     // 错误的默认情况
-    ElMessage.error(err.reponse.data.message || '服务异常')
+    ElMessage.error(err.response?.data?.message || '服务异常')
     return Promise.reject(err)
   },
 )
