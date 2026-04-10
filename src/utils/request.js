@@ -42,10 +42,10 @@ instance.interceptors.response.use(
       ElMessage.error('请求的资源不存在')
     } else if (err.response?.status >= 500) {
       ElMessage.error('服务器内部错误，请稍后再试')
+    } else {
+      // 错误的默认情况
+      ElMessage.error(err.response?.data?.message || '服务异常')
     }
-
-    // 错误的默认情况
-    ElMessage.error(err.response?.data?.message || '服务异常')
     return Promise.reject(err)
   },
 )
